@@ -1,0 +1,10 @@
+INSERT INTO STUDENT_TBL (age, level, name) VALUES (12, 'Beginner', 'Ben');
+INSERT INTO STUDENT_TBL (age, level, name) VALUES (20, 'Fresher', 'France');
+
+INSERT INTO COURSE_TBL (abbreviation, fee, title) VALUES ('PHP', 90.0, 'Lesson 1 PHP');
+INSERT INTO COURSE_TBL (abbreviation, fee, title) VALUES ('Java', 50.0, 'Lesson 1 Java');
+INSERT INTO COURSE_TBL (abbreviation, fee, title) VALUES ('VueJS', 200.0, 'Lesson 1 VueJS');
+
+INSERT INTO STUDENT_COURSE_TABLE (STUDENT_ID, COURSE_ID) VALUES (1, 1);
+INSERT INTO STUDENT_COURSE_TABLE (STUDENT_ID, COURSE_ID) VALUES (1, 3);
+INSERT INTO STUDENT_COURSE_TABLE (STUDENT_ID, COURSE_ID) VALUES (2, 1);
