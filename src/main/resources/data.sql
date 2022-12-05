@@ -1,10 +1,7 @@
-INSERT INTO STUDENT_TBL (age, level, name) VALUES (12, 'Beginner', 'Ben');
-INSERT INTO STUDENT_TBL (age, level, name) VALUES (20, 'Fresher', 'France');
+INSERT INTO USER_TBL (name, email, flag) VALUES ('Tommy', 'tommy@gmail.com', true);
+INSERT INTO USER_TBL (name, email, flag) VALUES ('Ben', 'ben@gmail.com', true);
 
-INSERT INTO COURSE_TBL (abbreviation, fee, title) VALUES ('PHP', 90.0, 'Lesson 1 PHP');
-INSERT INTO COURSE_TBL (abbreviation, fee, title) VALUES ('Java', 50.0, 'Lesson 1 Java');
-INSERT INTO COURSE_TBL (abbreviation, fee, title) VALUES ('VueJS', 200.0, 'Lesson 1 VueJS');
+INSERT INTO COURSE_TBL (count, name, user_id) VALUES (1, 'Ben', 2);
+INSERT INTO COURSE_TBL (count, name, user_id) VALUES (0, 'Tommy', 1);
 
-INSERT INTO STUDENT_COURSE_TABLE (STUDENT_ID, COURSE_ID) VALUES (1, 1);
-INSERT INTO STUDENT_COURSE_TABLE (STUDENT_ID, COURSE_ID) VALUES (1, 3);
-INSERT INTO STUDENT_COURSE_TABLE (STUDENT_ID, COURSE_ID) VALUES (2, 1);
+INSERT INTO BLOG_POST_TBL (name, description, url, image, course_id) VALUES ('Java', 'java description', 'url', 'image', 1);
