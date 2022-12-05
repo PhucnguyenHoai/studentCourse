@@ -1,5 +1,6 @@
 package org.example.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,6 +26,7 @@ public class BlogPost {
     private String url;
     private String image;
     @OneToMany(mappedBy = "blogPost")
+    @JsonBackReference
     private Set<Content> content;
     @ManyToOne
     @JoinColumn(name = "course_id", referencedColumnName = "id")

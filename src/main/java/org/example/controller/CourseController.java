@@ -15,7 +15,7 @@ public class CourseController {
     @Autowired
     private CourseRepository courseRepository;
 
-    @GetMapping("/getAll")
+    @GetMapping
     public List<Course> getAllCourse() {
         return courseRepository.findAll();
     }
@@ -31,7 +31,6 @@ public class CourseController {
     public ResponseEntity<Course> addCourse(@RequestBody Course course) {
         try {
             Course newCourse = courseRepository.save(course);
-            System.out.println(newCourse.toString() + "-----------------");
             return new ResponseEntity<>(newCourse, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);

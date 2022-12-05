@@ -32,4 +32,8 @@ public class User implements Serializable {
     @JsonBackReference
     private Set<Course> course;
 
+    @OneToMany(mappedBy = "user", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonBackReference
+    private Set<IPProxy> ipProxies;
+
 }
