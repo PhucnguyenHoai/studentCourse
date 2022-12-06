@@ -1,6 +1,7 @@
 package org.example.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -32,6 +33,6 @@ public class Course implements Serializable {
     private User user;
 
     @OneToMany(mappedBy = "course", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonIgnore
     private Set<BlogPost> blogPostSet;
 }
