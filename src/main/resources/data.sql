@@ -16,5 +16,10 @@ INSERT INTO PROXY_TBL (address, port, protocol, status, user_id) VALUES ('192.16
 --cf push example -p build/libs/example-1.0-SNAPSHOT.jar
 --cf push example -p /Users/nguyenphuc/Downloads/example/build/libs/example-1.0-SNAPSHOT.jar -b https://github.com/cloudfoundry/java-buildpack.git
 --git config --global user.name "your_github_username"
---  $ git config --global user.email "your_github_email" git config -l
+--git config --global user.email "your_github_email" git config -l
 --cf set-env example JBP_CONFIG_SPRING_AUTO_RECONFIGURATION: '{enabled: false}'
+
+--$ Username for 'https://github.com' : username
+--$ Password for 'https://github.com' : give your personal access token here
+--git config --global credential.helper cache
+-- token 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
