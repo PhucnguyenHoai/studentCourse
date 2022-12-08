@@ -1,8 +1,10 @@
 INSERT INTO USER_TBL (name, email, flag) VALUES ('Tommy', 'tommy@gmail.com', true);
 INSERT INTO USER_TBL (name, email, flag) VALUES ('Ben', 'ben@gmail.com', true);
+INSERT INTO USER_TBL (name, email, flag) VALUES ('Fat', 'fat@gmail.com', false);
 
-INSERT INTO COURSE_TBL (count, name, user_id) VALUES (0, 'Ben', 2);
-INSERT INTO COURSE_TBL (count, name, user_id) VALUES (0, 'Tommy', 1);
+INSERT INTO COURSE_TBL (count, name, user_id, flag) VALUES (0, 'Ben', 2, true);
+INSERT INTO COURSE_TBL (count, name, user_id, flag) VALUES (0, 'Tommy', 1, false);
+INSERT INTO COURSE_TBL (count, name, user_id, flag) VALUES (0, 'Fat', 3, true);
 
 INSERT INTO BLOG_POST_TBL (name, description, url, image, course_id) VALUES ('Java', 'java description', 'url', 'image', 1);
 

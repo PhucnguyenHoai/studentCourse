@@ -26,6 +26,7 @@ public class Course implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private boolean flag = true;
     private String name;
     private Long count;
     @ManyToOne
@@ -35,4 +36,8 @@ public class Course implements Serializable {
     @OneToMany(mappedBy = "course", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<BlogPost> blogPostSet;
+
+    public User getUser() {
+        return user;
+    }
 }

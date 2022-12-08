@@ -28,7 +28,7 @@ public class BlogPostController {
     @Autowired
     private CourseRepository courseRepository;
 
-    @GetMapping()
+    @GetMapping
     public List<BlogPost> getAll() {
         return blogPostRepository.findAll();
     }

@@ -1,14 +1,9 @@
 package org.example.controller;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import lombok.extern.slf4j.Slf4j;
 import org.example.model.User;
 import org.example.repository.UserRepository;
-import org.hibernate.mapping.Collection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,21 +27,37 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/getAll")
+    private boolean check(User user) {
+        boolean a = true;
+            if (user.isFlag() == true) {
+                a = true;
+            } else {
+                a = false;
+            }
+        return a;
+    }
+
+    @GetMapping
     public List<User> getAllUser() {
         List<User> userList = userRepository.findAll();
-        List<User> aList = userList.stream().filter(user -> user.isFlag()).collect(Collectors.toList());
-        return aList;
+        return userList.stream().filter(user -> user.isFlag()).collect(Collectors.toList());
     }
 
     @GetMapping("/search/{id}")
     public User getUserById(@PathVariable("id") Long id) {
-        return userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user id: " + id));
+        User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid id: " + id));
+        if(check(user)) {
+            return user;
+        } else {
+            throw new IllegalArgumentException("Invalid id: " + id);
+        }
     }
 
     @GetMapping("/course/{id}")
     public List<User> getUserByCourseId(@PathVariable("id") Long id) {
-        return userRepository.getUserByCourseId(id);
+        List<User> user = userRepository.getUserByCourseId(id);
+        List<User> list = user.stream().filter(u -> u.isFlag()).collect(Collectors.toList());
+        return list;
     }
 
     @PostMapping
@@ -61,10 +72,10 @@ public class UserController {
 
     @PutMapping("/{id}")
     public ResponseEntity<? extends Object> editUser(@PathVariable("id") Long id, @RequestBody User user) {
-        Optional<User> findUser = userRepository.findById(id);
+        User findUser = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid id: " + id));
 
-        if (findUser.isPresent()) {
-            User newUser = findUser.get();
+        if (check(findUser)) {
+            User newUser = findUser;
 
             newUser.setName(user.getName());
             newUser.setEmail(user.getEmail());
@@ -77,12 +88,16 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public String deleteUser(@PathVariable("id") Long id) {
+    public void deleteUser(@PathVariable("id") Long id) {
         try {
-            userRepository.deleteById(id);
-            return "Deleted";
+            User user = userRepository.findById(id).get();
+            if (check(user)) {
+                userRepository.rejectUserById(id);
+            } else {
+                log.error("Currently, user has flag is false");
+            }
         } catch (Exception e) {
-            return e.getMessage();
+            throw e;
         }
     }
 }

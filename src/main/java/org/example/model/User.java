@@ -37,4 +37,7 @@ public class User implements Serializable {
     @JsonIgnore
     private Set<IPProxy> ipProxies;
 
+    public boolean isFlag() {
+        return flag;
+    }
 }
