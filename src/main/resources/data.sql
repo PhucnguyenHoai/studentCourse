@@ -11,3 +11,9 @@ INSERT INTO BLOG_POST_TBL (name, description, url, image, course_id) VALUES ('Ja
 INSERT INTO CONTENT_TBL (type, content, blog_post_id) VALUES ('code', 'Content', 1);
 
 INSERT INTO PROXY_TBL (address, port, protocol, status, user_id) VALUES ('192.168.1.1', 80,'http', 200, 1);
+
+--cf login -u knkinhu@gmail.com -p phuc55
+--cf push example -p build/libs/example-1.0-SNAPSHOT.jar
+--cf push example -p /Users/nguyenphuc/Downloads/example/build/libs/example-1.0-SNAPSHOT.jar -b https://github.com/cloudfoundry/java-buildpack.git
+--
+--cf set-env example JBP_CONFIG_SPRING_AUTO_RECONFIGURATION: '{enabled: false}'
