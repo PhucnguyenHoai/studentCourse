@@ -6,9 +6,11 @@ applications:
     random-route: true
     buildpacks:
       - java_buildpack
-    path: /Users/nguyenphuc/Downloads/example/build/libs/example-1.0-SNAPSHOT.jar
-    #      - https://github.com/cloudfoundry/java-buildpack.git
+    path: ./build/libs/example-1.0-SNAPSHOT.jar
     env:
+#      JBP_CONFIG_TOMCAT: '{ tomcat: { version: 8.0.+ } }'
+#      JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ }, memory_calculator: { stack_threads: 25 } }'
+#      JBP_CONFIG_JAVA_MAIN: '{ arguments: "--server.port=9090 --foo=bar" }'
       JBP_CONFIG_SPRING_AUTO_RECONFIGURATION: '{ enabled: false }'
-      JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ }, memory_calculator: { stack_threads: 25 } }'
-      JBP_CONFIG_TOMCAT: '{ tomcat: { version: 8.0.+ } }'
+#      JBP_CONFIG_CONTAINER_SECURITY_PROVIDER: '{key_manager_enabled: false}'
+#      JBP_CONFIG_CONTAINER_SECURITY_PROVIDER: '{trust_manager_enabled: false}'
