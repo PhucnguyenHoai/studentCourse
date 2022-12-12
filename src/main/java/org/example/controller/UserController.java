@@ -2,6 +2,8 @@ package org.example.controller;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.example.model.User;
 import org.example.repository.UserRepository;
 import org.slf4j.Logger;
@@ -21,6 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/v1/user")
+@NoArgsConstructor
+@AllArgsConstructor
 @CrossOrigin
 public class UserController {
     private final Logger log = LoggerFactory.getLogger(UserController.class);
